@@ -1,0 +1,38 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+
+void insert_sort(int *a, int length){
+   
+   for (int i = 1; i < length; ++i) {
+
+        int key = a[i];
+
+        int j = i - 1;
+        while(j >= 0 && a[j] > key) {
+
+            a[j + 1] = a[j];
+
+            j--;
+        }
+        
+        a[j + 1] = key;
+
+       
+   }
+
+}
+
+
+int main(int argc, char const *argv[]) {
+
+    int a[9] = {9, 8, 7, 6, 5, 4, 3, 2, 1};
+
+    insert_sort(a, sizeof(a) / sizeof (a[0]) );
+    for (int i = 0; i < 9; ++i) {
+        
+        printf("%d\n", a[i]);
+    }
+    
+    return 0;
+}

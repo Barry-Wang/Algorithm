@@ -42,34 +42,12 @@ void insert_sort (int *a, int length) {
 
 }
 
-/*
-把当前位置的数字与前面已经排序好的比较，如果满足条件就交换，遇到第一个不满足条件的就停止这次比较
-*/
 
-
-void insert_sort_2 (int *a, int count) {
-
-    for (int i = 0; i < count; ++i)
-    {
-        int key = a[i];
-
-        int j = i - 1;
-        while (j >= 0 && a[j] > key) {
-
-            a[j+1] = a[j];
-            j--;
-        }
-
-        a[j+1] = key;
-
-    }
-
-}
 
 int main(int argc, char const *argv[]) {
 
     int a[] = {9, 8, 7, 6, 5, 4, 3, 2, 1};
-    insert_sort_2(a, sizeof(a) / sizeof(a[0]));
+    insert_sort(a, sizeof(a) / sizeof(a[0]));
 
     for (int i = 0; i < sizeof(a) / sizeof(a[0]); ++i)
     {
