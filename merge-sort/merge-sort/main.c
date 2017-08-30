@@ -10,6 +10,9 @@
 
 void merge(int *a, int start, int mid, int end){
     
+    printf("merge_left = %d, merge_mid = %d, merge_right = %d \n", start, mid, end);
+
+    
     int length1 = mid - start + 1;
     int length2 = end - mid;
     
@@ -31,7 +34,7 @@ void merge(int *a, int start, int mid, int end){
     
     int start1 = 0;
     int start2 = 0;
-    int index = 0;
+    int index = start;
     while (start1 < length1 && start2 < length2) {
         
         if (temp1[start1] > temp2[start2]) {
@@ -55,15 +58,33 @@ void merge(int *a, int start, int mid, int end){
         a[index++] = temp2[start2++];
     }
     
-    for(int i = 0; i < end; i++){
-      
-        printf("a[%d] = %d ", i, a[i]);
+
+}
+
+void merge_sort(int *a, int left, int right) {
+    
+    if (left >= right) {
+        
+        return;
     }
+    int mid = (left + right) / 2;
+    printf("left = %d, mid = %d, right = %d \n", left, mid, right);
+
+    merge_sort(a, left, mid);
+    merge_sort(a, mid + 1, right);
+
+    merge(a, left, mid, right);
+    
 }
 
 int main(int argc, const char * argv[]) {
     // insert code here...
-    int a[8] = {7, 5, 4, 2, 9, 6, 3, 1};
-    merge(a, 0, 3, 7);
+    int a[8] = {1, 2, 3, 4,5,6,7,8};
+    merge_sort(a, 0, 7);
+    
+    for(int i = 0; i <= 7; i++){
+        
+        printf("a[%d] = %d ", i, a[i]);
+    }
     return 0;
 }
